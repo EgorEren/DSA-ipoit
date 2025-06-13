@@ -3,6 +3,9 @@ package by.it.group410972.pushkarev.lesson05;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.Scanner;
 
 /*
 Первая строка содержит число 1<=n<=10000, вторая - n натуральных чисел, не превышающих 10.
@@ -39,7 +42,19 @@ public class B_CountSort {
             points[i] = scanner.nextInt();
         }
         //тут реализуйте логику задачи с применением сортировки подсчетом
+        int[] count = new int[11];
 
+        for (int i = 0; i < n; i++) {
+            count[points[i]]++;
+        }
+
+        int index = 0;
+        for (int i = 1; i <= 10; i++) { // начинаем с 1, так как числа от 1 до 10
+            while (count[i] > 0) {
+                points[index++] = i;
+                count[i]--;
+            }
+        }
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return points;
